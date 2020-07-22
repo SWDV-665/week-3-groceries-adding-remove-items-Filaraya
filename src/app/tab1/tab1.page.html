@@ -10,56 +10,36 @@
 <!-- Defines a basic grocery sliding list -->
 
 <ion-content [fullscreen]="true">
-  
+  <ion-list>
+    <ion-item-sliding  *ngFor="let item of items; let i = index">
+      <ion-item>
+        <ion-text lines="inset">
+          <ion-text>
+            <h2>{{item.name}}</h2>
+          </ion-text>
+            <p>{{item.quantity}}</p>
+          <ion-text>
+        </ion-text>
 
-<ion-list>
-  <ion-item-sliding>
-    <ion-item>
-      
-      <ion-label>banana x2lb</ion-label>
-      <p>$2.25</p>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option>
-        <ion-icon name="trash"></ion-icon>
-      </ion-item-option>
-      <ion-item-option color="secondary">
-        Done
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
+        </ion-text>
+        
+      </ion-item>
+      <ion-item-options>
+        <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
+          <ion-icon name="trash"></ion-icon>
+          Done
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
-  <ion-item-sliding>
-    <ion-item>
-    
-      <ion-label>bread x2</ion-label>
-      <p>$4.35</p>
-    </ion-item>
-    <ion-item-options> 
-      <ion-item-option>
-        <ion-icon name="trash"></ion-icon>
-      </ion-item-option>
-      <ion-item-option color="secondary">
-        Done
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-
-  <ion-item-sliding>
-    <ion-item>
-      <ion-label>Orangex3lb</ion-label>
-      <p>$5.75</p>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option>
-        <ion-icon name="trash"></ion-icon>
-      </ion-item-option>
-      <ion-item-option color="secondary">
-        Done
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
-
+  <ion-fab vertical = "bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addItem()" ion-fab mini>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>    
 </ion-content>
+
+
+  
 
